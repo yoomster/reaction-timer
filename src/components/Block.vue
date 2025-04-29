@@ -1,22 +1,29 @@
 <template>
-  <div class="block" @click.self="closeBlock">
-    <h1>click me!</h1>
-  </div>
+  <div class="block" v-if="showBlock">click me</div>
 </template>
 
 <script>
 export default {
   props: ["delay"],
 
-  methods: {
-    closeBlock() {
-      this.$emit("close");
-    },
+  data() {
+    return {
+      showBlock: false,
+    };
+  },
+
+  mounted() {
+    setTimeout(() => {
+      this.showBlock = true;
+    }, this.delay);
+  },
+  unmounted() {
+    console.log("unmounted");
   },
 };
 </script>
 
-<style scoped>
+<style>
 .block {
   width: 400px;
   padding: 100px 0;

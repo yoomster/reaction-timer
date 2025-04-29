@@ -2,7 +2,7 @@
   <h1>Think your fast?</h1>
   <p>Test it with this reaction timer</p>
   <button @click="start" :disabled="isPlaying">click to play</button>
-  <Block v-if="isPlaying" :delay="delay" @close="toggleBlock"></Block>
+  <Block v-if="isPlaying" :delay="delay" @click="toggleBlock"></Block>
 </template>
 
 <script>
