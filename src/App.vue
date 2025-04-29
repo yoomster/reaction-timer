@@ -1,17 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Think your fast?</h1>
+  <p>Test it with this reaction timer</p>
+  <button @click="toggleBlock">click to start</button>
+  <div v-if="showBlock">
+    <Block></Block>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Block from "./components/Block.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  components: { Block },
+  methods: {
+    toggleBlock() {
+      this.showBlock = !this.showBlock;
+    },
+  },
+  data() {
+    return {
+      showBlock: false,
+    };
+  },
+};
 </script>
 
 <style>
