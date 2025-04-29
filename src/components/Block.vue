@@ -1,13 +1,29 @@
 <template>
-  <div>
-    <h1>click asap!</h1>
+  <div class="block" @click.self="closeBlock">
+    <h1>click me!</h1>
   </div>
 </template>
 
-<style>
-h1 {
+<script>
+export default {
+  props: ["delay"],
+
+  methods: {
+    closeBlock() {
+      this.$emit("close");
+    },
+  },
+};
+</script>
+
+<style scoped>
+.block {
+  width: 400px;
+  padding: 100px 0;
+  margin: 40px auto;
+  background: #0faf87;
   color: white;
-  background: rgb(325, 0, 0.5);
-  border: 1px;
+  border-radius: 20px;
+  text-align: center;
 }
 </style>
