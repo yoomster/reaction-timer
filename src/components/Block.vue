@@ -20,9 +20,7 @@ export default {
       this.startTimer();
     }, this.delay);
   },
-  unmounted() {
-    console.log("unmounted");
-  },
+
   methods: {
     startTimer() {
       this.timer = setInterval(() => {
@@ -31,7 +29,7 @@ export default {
     },
     stopTimer() {
       clearInterval(this.timer);
-      console.log(this.reactionTime);
+      this.$emit("end", this.reactionTime);
     },
   },
 };

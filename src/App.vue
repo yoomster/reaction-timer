@@ -2,7 +2,8 @@
   <h1>Think your fast?</h1>
   <p>Test it with this reaction timer</p>
   <button @click="start" :disabled="isPlaying">click to play</button>
-  <Block v-if="isPlaying" :delay="delay" @click="toggleBlock"></Block>
+  <Block v-if="isPlaying" :delay="delay" @end="endGame"></Block>
+  <p v-if="showResult">Reaction time: {{ score }} ms</p>
 </template>
 
 <script>
@@ -11,21 +12,26 @@ import Block from "./components/Block.vue";
 export default {
   name: "App",
   components: { Block },
+  data() {
+    return {
+      isPlaying: false,
+      delay: null,
+      score: null,
+      showResult: false,
+    };
+  },
   methods: {
     start() {
       this.isPlaying = true;
       this.delay = 2000 + Math.random() * 5000;
       console.log(this.delay);
+      this.showResult = false;
     },
-    toggleBlock() {
-      this.showBlock = !this.showBlock;
+    endGame(reactionTime) {
+      this.score = reactionTime;
+      this.isPlaying = false;
+      this.showResult = true;
     },
-  },
-  data() {
-    return {
-      isPlaying: false,
-      delay: null,
-    };
   },
 };
 </script>
