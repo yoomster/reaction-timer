@@ -1,15 +1,14 @@
 <template>
-  <p>Reaction time: {{ score }} ms</p>
+  <p>Reaction time: {{ speed }} ms</p>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      score: null,
-    };
-  },
-  methods:
+  props: ["speed"],
 
+  data() {
+    return {};
+  },
+  methods: {},
 };
 </script>

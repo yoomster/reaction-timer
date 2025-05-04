@@ -3,7 +3,7 @@
   <p>Test it with this reaction timer</p>
   <button @click="start" :disabled="isPlaying">click to play</button>
   <Block v-if="isPlaying" :delay="delay" @end="endGame"></Block>
-  <Results v-if="showResult"></Results>
+  <Results v-if="showResult" :speed="this.score"></Results>
 </template>
 
 <script>
